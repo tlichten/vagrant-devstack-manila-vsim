@@ -3,7 +3,7 @@
 Use [Vagrant](https://www.vagrantup.com) to automatically build an OpenStack Manila environment including NetApp clustered Data ONTAP simulator backend 
 
 ##### About
-This project is the foundation for the automation lab used as part of the OpenStack Libery Design Summit session [Manila: Taking OpenStack Shared File Storage to the Telco Cloud](https://openstacksummitmay2015vancouver.sched.org/event/db27df3cc6ad23a28830be858cfd618d)                 
+This project is the foundation for the automation lab used as part of the OpenStack Liberty Design Summit session [Manila: Taking OpenStack Shared File Storage to the Telco Cloud](https://openstacksummitmay2015vancouver.sched.org/event/db27df3cc6ad23a28830be858cfd618d)                 
 
 ##### Table of Contents
 * [System requirements](#system-requirements)
