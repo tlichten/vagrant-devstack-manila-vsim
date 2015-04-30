@@ -49,7 +49,7 @@ CLUSTER_BASE_LICENSE="SMKXXXXXXXXXXXXXXXXXXXXXXXXX"
 ...
 ```
 **Important**: Use the **non-ESX build** license. 
-- Configure additional licenses required for Manila
+- Configure additional licenses required for Manila  
 Configure the additional, required licenses CIFS, NFS, FlexClone for the use with Manila
 The additional licenses can be obtained from the [support site](http://mysupport.netapp.com/NOW/download/tools/simulator/ontap/8.X/).  
 `vsim.conf`: 
@@ -72,9 +72,26 @@ $ vagrant up
  - You will be asked to import the simulator as a Vagrant box on first run. Press ```y``` to proceed and import. The import will take a few minutes.
  - During the deployment, a service VM will be started. The service VM will offer an ip address to the simulator and configure the VSim.
  - After the VSim has been deployed, a DevStack VM will be provisioned. The DevStack run will take about 40 minutes depending on the speed of your internet connection.
- - Wait until the deployment is ready. Once ready, to access the DevStack console run:
+ - Wait until the deployment is ready. Once ready, to access the DevStack console and create and mount a share, run:
 ```bash
 $ vagrant ssh devstackvm
+$ cd devstack
+$ source openrc demo demo
+$ neutron net-list
+$ manila share-network-create --neutron-net-id $PRIVATE_NET_ID$ --neutron-subnet-id $PRIVATE_SUBNET_ID$ --name MyShareNetwork
+$ manila create --share-network MyShareNetwork --name MyShare NFS 1
+$ manila list
+$ neutron security-group-rule-create --protocol icmp default
+$ neutron security-group-rule-create --protocol tcp --port-range-min 22 --port-range-max 22 default
+$ nova boot --poll --flavor m1.nano --image ubuntu_1204_nfs_cifs demo-vm0
+$ nova list
+$ manila access-allow MyShare ip $NOVA_INSTANCE_IP$
+$ nova floating-ip-create public
+$ nova add-floating-ip demo-vm0 $FLOATING_IP$
+$ ssh ubuntu@$FLOATING_IP$
+$ sudo mkdir /mnt/share
+$ sudo mount -t nfs $MYSHARE_EXPORT_LOCATION$ /mnt/share
+$ sudo touch /mnt/share/hello_world
 ```
 - To access the Horizon dashboard, point your browser to http://192.168.10.30. The admin credentials are username admin, password devstack. The demo credentials are username demo, password devstack  
 - As the demo user you can create a share network on your private network, and then create a share on that share network.
