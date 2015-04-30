@@ -75,6 +75,9 @@ $ vagrant up
  - Wait until the deployment is ready. Once ready, to access the DevStack console and create and mount a share, run:
 ```bash
 $ vagrant ssh devstackvm
+```
+- As the demo user you can create a share network on your private network, and then create a share on that share network, from the DevStack console run: 
+```bash
 $ cd devstack
 $ source openrc demo demo
 $ neutron net-list
@@ -94,8 +97,6 @@ $ sudo mount -t nfs $MYSHARE_EXPORT_LOCATION$ /mnt/share
 $ sudo touch /mnt/share/hello_world
 ```
 - To access the Horizon dashboard, point your browser to http://192.168.10.30. The admin credentials are username admin, password devstack. The demo credentials are username demo, password devstack  
-- As the demo user you can create a share network on your private network, and then create a share on that share network.
-- TODO: Explain usage in greater detail
 - When done, you can destroy the entire environment. Run:
 ```bash
 $ vagrant destroy
