@@ -1,9 +1,10 @@
 #!/bin/sh
 
 # environment variables
-OPENSTACK_BRANCH=master
+OPENSTACK_BRANCH=stable/kilo
 OPENSTACK_ADM_PASSWORD=devstack
-MANILA_BRANCH=master
+MANILA_BRANCH=stable/kilo
+MANILA_UI_BRANCH=stable/kilo
 
 # determine own script path
 BASHPATH="`dirname \"$0\"`"              # relative
@@ -12,10 +13,10 @@ echo "run script from $BASHPATH"
 
 export OPENSTACK_BRANCH=$OPENSTACK_BRANCH
 export MANILA_BRANCH=$MANILA_BRANCH
+export MANILA_UI_BRANCH=$MANILA_UI_BRANCH
 export OPENSTACK_ADM_PASSWORD=$OPENSTACK_ADM_PASSWORD
-export HOST_IP=$OS_HOST_IP
-export NODE_MGMT_IP=$NODE_MGMT_IP
-export DEVSTACK_MGMT_IP=$DEVSTACK_MGMT_IP
+export HOST_IP=$HOST_IP
+export OS_HOST_IP=$HOST_IPr
 # update system
 export DEBIAN_FRONTEND noninteractive
 sudo apt-get update
