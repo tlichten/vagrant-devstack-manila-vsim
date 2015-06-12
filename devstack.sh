@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # environment variables
-OPENSTACK_BRANCH=stable/kilo
+OPENSTACK_BRANCH=master
 OPENSTACK_ADM_PASSWORD=devstack
-MANILA_BRANCH=stable/kilo
-MANILA_UI_BRANCH=stable/kilo
+MANILA_BRANCH=master
+MANILA_UI_BRANCH=master
 
 # determine own script path
 BASHPATH="`dirname \"$0\"`"              # relative
@@ -16,7 +16,7 @@ export MANILA_BRANCH=$MANILA_BRANCH
 export MANILA_UI_BRANCH=$MANILA_UI_BRANCH
 export OPENSTACK_ADM_PASSWORD=$OPENSTACK_ADM_PASSWORD
 export HOST_IP=$HOST_IP
-export OS_HOST_IP=$HOST_IPr
+export OS_HOST_IP=$HOST_IP
 # update system
 export DEBIAN_FRONTEND noninteractive
 sudo apt-get update
@@ -56,6 +56,18 @@ then
   fi
 fi
 
+# Copy NetApp configs
+# Copy nfs shares
+echo "Copy nfs shares from $BASHPATH/config/nfs.shares to /etc/cinder/nfs.shares"
+sudo mkdir -p /etc/cinder
+sudo chown $OS_USER:$OS_USER /etc/cinder
+sudo cp $BASHPATH/config/nfs.shares /etc/cinder/nfs.shares
+sudo chown $OS_USER:$OS_USER /etc/cinder/nfs.shares
+# Mount Glance
+echo "Mounting Glance export"
+sudo mkdir -p /mnt/glance
+sudo mount -t nfs -o sec=sys 10.0.207.40:/vol5_glance /mnt/glance
+sudo chown -R $OS_USER:$OS_USER /mnt/glance
 
 # start devstack
 echo "Start Devstack"
