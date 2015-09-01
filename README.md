@@ -38,7 +38,7 @@ This project is the foundation for the automation lab used as part of the OpenSt
  - Download [*NetApp Manageability (NM) SDK*](https://mysupport.netapp.com/NOW/download/software/nmsdk/5.4/). Version 5.4 has been tested.
  - Save the downloaded file ```netapp-manageability-sdk*.zip``` to this project's root directory, e.g. ```~/vagrant-vsim/netapp-manageability-sdk-5.4.zip```
  - Download [*Clustered Data ONTAP 8.x Simulator for VMware Workstation, VMware Player, and VMware Fusion*](http://mysupport.netapp.com/NOW/download/tools/simulator/ontap/8.X/). Version 8.2.3 has been tested.
- - Save the downloaded file ```vsim_netapp-cm.tgz``` to this project's root directory, e.g. ```~/vagrant-vsim/vsim_netapp-cm.tgz```
+ - Save the downloaded file ```vsim_netapp-cm.tgz``` to this project's root directory, e.g. ```~/vagrant-devstack-manila-vsim/vsim_netapp-cm.tgz```
  - Configure the Cluster base license.  
  Edit ```vsim.conf```, at the top set the 8.x Cluster base license within ```CLUSTER_BASE_LICENSE``` accordingly. The license can be obtained from the [support site](http://mysupport.netapp.com/NOW/download/tools/simulator/ontap/8.X/).  
 `vsim.conf`: 
@@ -137,7 +137,7 @@ vagrant plugin install vagrant-cachier
 
 ## Uninstall
 
- - From this directory, e.g.  ```~/vagrant-vsim/```, run:
+ - From this directory, e.g.  ```~/vagrant-devstack-manila-vsim/```, run:
 ```bash
 $ vagrant destroy
 $ vagrant box remove VSim
