@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # environment variables
-OPENSTACK_BRANCH=stable/kilo
+OPENSTACK_BRANCH=master
 OPENSTACK_ADM_PASSWORD=devstack
-MANILA_BRANCH=stable/kilo
-MANILA_UI_BRANCH=stable/kilo
+MANILA_BRANCH=master
+MANILA_UI_BRANCH=master
 
 # determine own script path
 BASHPATH="`dirname \"$0\"`"              # relative
@@ -54,6 +54,8 @@ then
     echo "Found Manila image, copy to devstack"
     su $OS_USER -c "cp $MANILA_IMAGE $DEVSTACK/files/"
   fi
+  echo "Installing NetApp Lib"
+  sudo pip install netapp-lib
 fi
 
 

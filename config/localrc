@@ -47,5 +47,3 @@ MANILA_REPO_ROOT=openstack
 GIT_BASE=http://github.com
 enable_plugin manila https://github.com/openstack/manila
 
-TEMPEST_REPO=https://github.com/TelekomNFV/tempest.git
-TEMPEST_BRANCH=manila_demo
