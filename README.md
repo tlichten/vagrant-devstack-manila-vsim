@@ -36,7 +36,7 @@ This project is the foundation for the automation lab used as part of the OpenSt
 
  - If you use [Git](http://git-scm.com/), clone this repo. If you don't use Git, [download](https://github.com/tlichten/vagrant-devstack-manila-vsim/archive/master.zip) the project and extract it.
  - Download [*NetApp Manageability (NM) SDK*](https://mysupport.netapp.com/NOW/download/software/nmsdk/5.4/). Version 5.4 has been tested.
- - Save the downloaded file ```netapp-manageability-sdk*.zip``` to this project's root directory, e.g. ```~/vagrant-vsim/netapp-manageability-sdk-5.4.zip```
+ - Save the downloaded file ```netapp-manageability-sdk*.zip``` to this project's root directory, e.g. ```~/vagrant-devstack-manila-vsim/netapp-manageability-sdk-5.4.zip```
  - Download [*Clustered Data ONTAP 8.x Simulator for VMware Workstation, VMware Player, and VMware Fusion*](http://mysupport.netapp.com/NOW/download/tools/simulator/ontap/8.X/). Version 8.2.3 has been tested.
  - Save the downloaded file ```vsim_netapp-cm.tgz``` to this project's root directory, e.g. ```~/vagrant-devstack-manila-vsim/vsim_netapp-cm.tgz```
  - Configure the Cluster base license.  
