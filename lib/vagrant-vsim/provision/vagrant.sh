@@ -2,7 +2,6 @@
 
 # update system
 export DEBIAN_FRONTEND noninteractive
-sudo rm -Rf /var/lib/apt/lists/* -vf
 sudo apt-get update
 sudo apt-get install -qqy git
 
@@ -11,13 +10,10 @@ PROVISION=$1
 # determine checkout folder
 export OS_USER=vagrant
 PWD=$(su $OS_USER -c "cd && pwd")
-VAGRANT_VSIM="$PWD/vagrant-vsim"
-# check if vagrant-vsim is already there
-if [ ! -d "$VAGRANT_VSIM" ]
-then
-	echo "Download vagrant-vsim into $VAGRANT_VSIM"
-	# clone vagrant-vsim
-	su $OS_USER -c "cd && git clone https://github.com/tlichten/vagrant-vsim.git $VAGRANT_VSIM"
+VAGRANT_VSIM="/vagrant"
+
+if [ ! -d "$VAGRANT_VSIM/provision" ]; then
+    VAGRANT_VSIM="/vagrant/lib/vagrant-vsim"
 fi
 
 # start vagrant-vsim provisioning
